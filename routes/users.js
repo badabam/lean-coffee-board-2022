@@ -2,7 +2,7 @@ const express = require('express')
 const uuid = require('uuid').v4
 const router = express.Router()
 
-const users = [
+let users = [
   {
     name: 'Jane Doe',
     age: 51,
@@ -48,7 +48,7 @@ router.patch('/:id', (req, res, next) => {
 // delete user
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params
-  updatedUsers = users.filter(user => user.id !== id)
+  users = users.filter(user => user.id !== id)
   res.sendStatus(204)
 })
 
