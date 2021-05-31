@@ -19,6 +19,24 @@ Content-Type: application/json
   "email": "maxmustermann1979@gmx.de"
 }
 
+### POST a user without name (should fail)
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+  "age": 34,
+  "email": "testuser@one.de"
+}
+
+### POST a user without name (should fail)
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+  "age": 12,
+  "email": "testuser@two.de"
+}
+
 ### PATCH /api/users/1
 PATCH {{baseUrl}}/api/users/1
 Content-Type: application/json

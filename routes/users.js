@@ -1,54 +1,39 @@
 const express = require('express')
 const uuid = require('uuid').v4
 const router = express.Router()
+const Users = require('../models/Users')
 
-let users = [
-  {
-    name: 'Jane Doe',
-    age: 51,
-    email: 'jane@doe.de',
-    id: '0',
-  },
-  {
-    name: 'John Doe',
-    age: 55,
-    email: 'john@doe.de',
-    id: '1',
-  },
-]
 // Get all users
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
+  const users = await Users.find() //async & returns promise
   res.json(users)
 })
 // Get single user
-router.get('/:id', (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   const { id } = req.params
-  const searchedUser = users.find(user => user.id === id)
+  const searchedUser = await Users.findById(id)
   searchedUser ? res.json(searchedUser) : next()
 })
 
 // create user
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const newUser = { ...req.body, id: uuid() }
-  users.push(newUser)
+  await Users.create(newUser)
   res.status(201).json(newUser)
 })
 
 // update user
-router.patch('/:id', (req, res, next) => {
+router.patch('/:id', async (req, res, next) => {
   const { id } = req.params
-  console.log(id)
-  const index = users.findIndex(user => user.id === id)
-  const selectedUser = users[index]
-  updatedUser = { ...selectedUser, ...req.body }
-  users.splice(index, 1, updatedUser)
+  Users.findByIdAndUpdate(id, req.body, { new: true })
+  const updatedUser = await Users.findById(id)
   res.json(updatedUser)
 })
 
 // delete user
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params
-  users = users.filter(user => user.id !== id)
+  User.findByIdAndDelete(id)
   res.sendStatus(204)
 })
 

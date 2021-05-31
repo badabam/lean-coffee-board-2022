@@ -4,6 +4,7 @@ Eine card hat die properties: text, author, votes. */
 const express = require('express')
 const uuid = require('uuid').v4
 const router = express.Router()
+const Cards = require('../models/Cards')
 
 let cards = [
   {
@@ -21,38 +22,37 @@ let cards = [
 ]
 
 // Get all cards
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
+  const cards = await Cards.find() //async & returns promise
   res.json(cards)
 })
 
 // Get single card
-router.get('/:id', (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   const { id } = req.params
-  const searchedCard = cards.find(card => card.id === id)
+  const searchedCard = await Card.findById(id)
   searchedCard ? res.json(searchedCard) : next()
 })
 
 // create card
-router.post('/', (req, res, next) => {
+router.post('/', async (req, res, next) => {
   const newCard = { ...req.body, id: uuid() }
-  cards.push(newCard)
+  await Cards.create(newCard)
   res.status(201).json(newCard)
 })
 
 // update card
-router.patch('/:id', (req, res, next) => {
+router.patch('/:id', async (req, res, next) => {
   const { id } = req.params
-  const index = cards.findIndex(user => user.id === id)
-  const searchedCard = cards[index]
-  const updatedCard = { ...searchedCard, ...req.body }
-  cards.splice(index, 1, updatedCard)
+  Cards.findByIdAndUpdate(id, req.body, { new: true })
+  const updatedCard = await Cards.findById(id)
   res.json(updatedCard)
 })
 
 // delete card
 router.delete('/:id', (req, res, next) => {
   const { id } = req.params
-  cards = cards.filter(card => card.id !== id)
+  Cards.findByIdAndDelete(id)
   res.sendStatus(204)
 })
 
