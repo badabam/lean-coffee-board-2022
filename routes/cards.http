@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:4000
 
-### List all user
+### List all cards
 GET {{baseUrl}}/api/cards
 
 ### List one cards

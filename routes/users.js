@@ -25,9 +25,7 @@ router.post('/', async (req, res, next) => {
 // update user
 router.patch('/:id', async (req, res, next) => {
   const { id } = req.params
-  Users.findByIdAndUpdate(id, req.body, { new: true })
-  const updatedUser = await Users.findById(id)
-  res.json(updatedUser)
+  res.json(Users.findByIdAndUpdate(id, req.body, { new: true }))
 })
 
 // delete user

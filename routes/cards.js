@@ -44,9 +44,7 @@ router.post('/', async (req, res, next) => {
 // update card
 router.patch('/:id', async (req, res, next) => {
   const { id } = req.params
-  Cards.findByIdAndUpdate(id, req.body, { new: true })
-  const updatedCard = await Cards.findById(id)
-  res.json(updatedCard)
+  res.json(Cards.findByIdAndUpdate(id, req.body, { new: true }))
 })
 
 // delete card
