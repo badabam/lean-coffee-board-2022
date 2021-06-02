@@ -9,7 +9,7 @@ export default function Card({ text, author }) {
   return (
     <Wrapper>
       <Text>{text}</Text>
-      <Author data="test">– {author}</Author>
+      <Author>– {author}</Author>
     </Wrapper>
   )
 }
