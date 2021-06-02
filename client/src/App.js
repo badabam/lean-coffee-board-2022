@@ -4,9 +4,12 @@ import styled from 'styled-components'
 export default function App() {
   return (
     <Container>
-      <Card>What does Mongo mean?</Card>
-      <Card>What does Mongo mean?</Card>
-      <Card>What does Mongo mean?</Card>
+      <Card text={'What does Mongo mean?'} author={'John Doe'} />
+      <Card
+        text={'What does Mongo mean?'}
+        author={'John DoeLongNameThatCantGetDisplayed'}
+      />
+      <Card text={'What does Mongo mean?'} author={'John Doe'} />
     </Container>
   )
 }
