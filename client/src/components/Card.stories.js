@@ -9,5 +9,12 @@ const Template = args => <Card {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  children: 'Hello world',
+  text: 'Hello world',
+  author: 'John Doe',
+}
+
+export const longAuthor = Template.bind({})
+longAuthor.args = {
+  text: 'Hello world',
+  author: 'Neville Longbottom',
 }
