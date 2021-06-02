@@ -25,5 +25,9 @@ const Wrapper = styled.section`
 
   span {
     justify-self: end;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 10ch;
+    text-overflow: ellipsis;
   }
 `
