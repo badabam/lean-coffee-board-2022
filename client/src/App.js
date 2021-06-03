@@ -1,17 +1,35 @@
 import Card from './components/Card'
 import styled from 'styled-components'
+import Button from './components/Button'
+import { useState } from 'react'
+import Form from './components/Form'
 
 export default function App() {
+  const [activePage, setActivePage] = useState('card')
+  const [cards, setCards] = useState([])
+
   return (
     <Container>
-      <Card text={'What does Mongo mean?'} author={'John Doe'} />
-      <Card
-        text={'What does Mongo mean?'}
-        author={'John DoeLongNameThatCantGetDisplayed'}
-      />
-      <Card text={'What does Mongo mean?'} author={'John Doe'} />
+      {activePage === 'card' && (
+        <>
+          {cards.map(({ text, author }) => (
+            <Card text={text} author={author} />
+          ))}
+          <Button onClick={() => handleActivePage('create')}>Add Card</Button>{' '}
+        </>
+      )}
+      {activePage === 'create' && (
+        <Form onClick={handleActivePage} onSubmit={handleSubmit} />
+      )}
     </Container>
   )
+
+  function handleActivePage(page) {
+    setActivePage(page)
+  }
+  function handleSubmit(card) {
+    setCards([card, ...cards])
+  }
 }
 
 const Container = styled.main`
