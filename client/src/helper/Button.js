@@ -6,8 +6,12 @@ Button.propTypes = {
   onClick: PropTypes.func,
 }
 
-export default function Button({ children, onClick }) {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>
+export default function Button({ children, onClick, ...props }) {
+  return (
+    <StyledButton onClick={onClick} {...props}>
+      {children}
+    </StyledButton>
+  )
 }
 
 const StyledButton = styled.button`
@@ -17,9 +21,15 @@ const StyledButton = styled.button`
   padding: 8px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  font-size: 1rem;
 
   :hover {
     color: #fff;
     background-color: steelblue;
+  }
+
+  :disabled {
+    background-color: lightgrey;
+    color: inherit;
   }
 `

@@ -15,12 +15,14 @@ export default function Card({ text, author }) {
 }
 
 const Wrapper = styled.section`
+  background: linear-gradient(180deg, #efefef, #dfdfdf);
   display: flex;
   flex-direction: column;
   justify-items: space-between;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 8px 16px var(--color-shadow);
+  box-shadow: 0 8px 8px var(--color-shadow);
+  margin: 16px 0;
 `
 const Text = styled.p`
   margin: 0;
