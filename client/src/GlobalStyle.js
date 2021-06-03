@@ -12,9 +12,10 @@ export default createGlobalStyle`
    line-height: 1.4;
  }
 
-:Root {
+:root {
   --color-black: #333;
-  --color-shadow: rgba(0,0,0,0.25);
+  --color-shadow: rgba(0 ,0 ,0 , 0.25);
+  --color-cta: hotpink;
 }
 
 
