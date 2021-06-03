@@ -2,11 +2,12 @@ import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
 Button.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
 }
 
-export default function Button({ children }) {
-  return <StyledButton>{children}</StyledButton>
+export default function Button({ children, onClick }) {
+  return <StyledButton onClick={onClick}>{children}</StyledButton>
 }
 
 const StyledButton = styled.button`
