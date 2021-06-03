@@ -12,7 +12,10 @@ export default createGlobalStyle`
    line-height: 1.4;
  }
 
-
+:Root {
+  --color-black: #333;
+  --color-shadow: rgba(0,0,0,0.25);
+}
 
 
 `
