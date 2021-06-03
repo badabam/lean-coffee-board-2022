@@ -10,9 +10,7 @@ export default function Card({ text, author }) {
   return (
     <Wrapper>
       <p>{text}</p>
-      <AuthorText>
-        - {author.length > 20 ? author.substr(0, 19) + '...' : author}
-      </AuthorText>
+      <AuthorText>- {author}</AuthorText>
     </Wrapper>
   )
 }
@@ -20,11 +18,14 @@ export default function Card({ text, author }) {
 const Wrapper = styled.section`
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 8px 16px #0006;
+  box-shadow: 0 6px 10px #0006;
   display: grid;
 `
 
-const AuthorText = styled.span`
-  text-align: right;
+const AuthorText = styled.div`
   width: 100%;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `

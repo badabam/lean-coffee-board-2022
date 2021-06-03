@@ -16,5 +16,5 @@ Default.args = {
 export const longName = Template.bind({})
 longName.args = {
   text: 'Hello world',
-  author: 'Jonas jose maria del rio cuenca',
+  author: 'Jonas Wolf mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm',
 }
