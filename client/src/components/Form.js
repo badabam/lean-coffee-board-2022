@@ -55,17 +55,10 @@ export default function Form({ onClick, onSubmit }) {
   }
 
   function validateForm() {
-    if (
-      inputStates.text.trim().length > 0 &&
-      inputStates.author.trim().length > 0
-    ) {
-      setIsDisabled(false)
-    } else if (
-      inputStates.text.length === 0 ||
-      inputStates.author.length === 0
-    ) {
-      setIsDisabled(true)
-    }
+
+    setIsDisabled(
+      inputStates.text.trim().length === 0 || 
+        inputStates.author.trim().length === 0)
   }
 }
 const Container = styled.section`
