@@ -15,7 +15,7 @@ export default function Card({ text, author }) {
 }
 
 const Wrapper = styled.section`
-  background: linear-gradient(180deg, #efefef, #dfdfdf);
+  background: linear-gradient(180deg, #fafafa, #eaeaea);
   display: flex;
   flex-direction: column;
   justify-items: space-between;

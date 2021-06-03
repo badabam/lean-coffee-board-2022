@@ -56,5 +56,7 @@ const Wrapper = styled.div`
   div {
     overflow-y: auto;
     padding: 16px;
+    padding-top: 0;
+    background-color: transparent;
   }
 `
