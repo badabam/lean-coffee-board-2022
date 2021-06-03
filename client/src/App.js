@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { v4 as uuidv4 } from 'uuid'
 import Card from './components/Card'
 import Form from './components/Form'
@@ -37,8 +37,8 @@ export default function App() {
     setActivePage(page)
   }
   function handleSubmit(card) {
-    const modifiedCard = { ...card, id: uuidv4() }
-    setCards(cards => [modifiedCard, ...cards])
+    const cardWithId = { ...card, id: uuidv4() }
+    setCards(cards => [cardWithId, ...cards])
   }
 }
 

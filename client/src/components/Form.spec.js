@@ -18,7 +18,10 @@ describe('Form', () => {
     userEvent.type(text, 'ratatam')
     userEvent.type(author, 'morten')
     fireEvent.submit(form)
-    expect(handleSubmit).toHaveBeenCalled()
+    expect(handleSubmit).toHaveBeenCalledWith({
+      text: 'ratatam',
+      author: 'morten',
+    })
   })
 
   it('does not submit when one of the input fields is empty', () => {
@@ -26,6 +29,6 @@ describe('Form', () => {
     render(<Form onSubmit={handleSubmit} />)
     const button = screen.getByRole('button', { name: 'Create Card' })
     userEvent.click(button)
-    expect(handleSubmit.mock.calls.length).toBe(0)
+    expect(handleSubmit).toHaveBeenCalledTimes(0)
   })
 })

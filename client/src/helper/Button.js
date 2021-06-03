@@ -20,7 +20,6 @@ const StyledButton = styled.button`
   border-radius: 8px;
   padding: 8px;
   transition: all 0.2s ease-in-out;
-  cursor: pointer;
   font-size: 1rem;
 
   :hover {

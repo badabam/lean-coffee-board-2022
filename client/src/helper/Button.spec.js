@@ -11,7 +11,7 @@ describe('Button', () => {
     expect(handleClick).toBeCalledTimes(1)
   })
 
-  it('contains a text', async () => {
+  it('contains a text', () => {
     render(<Button onClick={() => {}}>Click me</Button>)
 
     const button = screen.getByRole('button', { name: 'Click me' })
