@@ -50,7 +50,7 @@ export default function Form({ onClick, onSubmit }) {
   }
 
   function handleChange(event) {
-    const value = event.target.value
+    const {name, value} = event.target
     setInputStates({ ...inputStates, [event.target.name]: value })
   }
 
