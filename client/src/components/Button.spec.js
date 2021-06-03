@@ -1,11 +1,20 @@
 import { render, screen } from '@testing-library/react'
-  import Button from './Button'
-  
-  describe('Button', () => {
-    it('has af Carcasonne as text', () => {
-      const { container } = render(<Button />)
-  
-      expect(container.firstChild).toHaveTextContent('Button')
-    })
+import userEvent from '@testing-library/user-event'
+import Button from './Button'
+
+describe('Button', () => {
+  it('calls onClick', () => {
+    const handleClick = jest.fn()
+    render(<Button onClick={handleClick}>Add Card</Button>)
+    const button = screen.getByRole('button', { name: 'Add Card' })
+    userEvent.click(button)
+    expect(handleClick).toBeCalledTimes(1)
   })
-  
+
+  it('contains a text', async () => {
+    render(<Button onClick={() => {}}>Click me</Button>)
+
+    const button = screen.getByRole('button', { name: 'Click me' })
+    expect(button).toBeInTheDocument()
+  })
+})
