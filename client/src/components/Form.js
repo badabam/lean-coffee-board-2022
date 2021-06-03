@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components/macro'
 import Button from '../helper/Button'
 
@@ -41,6 +41,7 @@ export default function Form({ onClick, onSubmit }) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    if (isDisabled) return
     const form = event.target
     onSubmit(inputStates)
     setInputStates({ text: '', author: '' })

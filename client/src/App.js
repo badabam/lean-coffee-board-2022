@@ -1,10 +1,10 @@
-import Card from './components/Card'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Button from './helper/Button'
-import { useState, useEffect } from 'react'
-import Form from './components/Form'
-import useLocalStorage from './helper/useLocalStorage'
 import { v4 as uuidv4 } from 'uuid'
+import Card from './components/Card'
+import Form from './components/Form'
+import Button from './helper/Button'
+import useLocalStorage from './helper/useLocalStorage'
 
 export default function App() {
   const [activePage, setActivePage] = useState('card')
@@ -41,11 +41,6 @@ export default function App() {
     setCards(cards => [modifiedCard, ...cards])
   }
 }
-
-const Container = styled.main`
-  display: grid;
-  gap: 20px;
-`
 
 const Wrapper = styled.div`
   height: 100vh;
