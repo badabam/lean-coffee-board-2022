@@ -17,6 +17,7 @@
   "author": "Jeremias Erbs <jerry@badabam.de> (https://badabam.de/)",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "10.0.0",
     "express": "5.0.0-alpha.8",
     "mongodb": "3.6.9",
     "mongoose": "5.12.11",
