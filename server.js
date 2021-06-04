@@ -13,12 +13,13 @@ mongoose
 const app = express()
 
 // add middleware for json data
-app.use('/', express.json()) // (req, res, next) => {...}
+app.use('/api', express.json()) // (req, res, next) => {...}
 app.use('/api/users', require('./routes/users'))
 app.use('/api/cards', require('./routes/cards'))
+app.use(express.static('client/build'))
 
-// catch all (404)
-app.use((req, res) => res.sendStatus(404))
+// redirect to index.html
+app.use('*', (req, res) => res.sendFile('client/build/index.html'))
 
 // error route
 app.use(require('./routes/error'))
