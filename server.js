@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path')
 
 mongoose
   .connect('mongodb://localhost:27017/lean-coffee-board', {
@@ -19,7 +20,9 @@ app.use('/api/cards', require('./routes/cards'))
 app.use(express.static('client/build'))
 
 // redirect to index.html
-app.use('*', (req, res) => res.sendFile('client/build/index.html'))
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build/index.html'))
+})
 
 // error route
 app.use(require('./routes/error'))
