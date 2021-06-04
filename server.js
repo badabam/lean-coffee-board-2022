@@ -3,14 +3,18 @@ const mongoose = require('mongoose')
 const path = require('path')
 
 require('dotenv').config()
-const { PORT = 4000, SPOTIFY_TOKEN } = process.env
+const {
+  PORT = 4000,
+  SPOTIFY_TOKEN,
+  MONGODB_URL = 'mongodb://localhost:27017/lean-coffee-board',
+} = process.env
 
 mongoose
-  .connect('mongodb://localhost:27017/lean-coffee-board', {
+  .connect(MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('Connected to MongoDB (lean-coffee-board)'))
+  .then(() => console.log('Connected to MongoDB'))
   .catch(console.error)
 
 // express likes to call the server "app"
